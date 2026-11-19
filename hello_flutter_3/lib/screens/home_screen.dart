@@ -13,6 +13,12 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.blue[200],
         elevation: 20.0,
         shadowColor: Colors.black,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.ac_unit_rounded),
+          ),
+        ],
       ),
     );
   }
