@@ -1,5 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 
+enum MenuAction { refresh, settings, logout }
+
 class HomeScreen extends StatelessWidget {
   const new({super.key});
 
@@ -22,6 +24,42 @@ class HomeScreen extends StatelessWidget {
             onPressed: () {},
             icon: Icon(Icons.ac_unit_rounded),
           ),
+          // Overflow menu (three dots)
+          PopupMenuButton<MenuAction>(
+            tooltip: 'More options',
+            onSelected: (MenuAction item) {
+              switch (item) {
+                case MenuAction.refresh:
+                  // Handle refresh
+                  break;
+                case MenuAction.settings:
+                  // Navigate to settings
+                  break;
+                case MenuAction.logout:
+                  // Handle logout
+                  break;
+              }
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<MenuAction>>[
+              const PopupMenuItem<MenuAction>(
+                value: MenuAction.refresh,
+                child: ListTile(
+                  leading: Icon(Icons.refresh),
+                  title: Text('Refresh'),
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+              const PopupMenuItem<MenuAction>(
+                value: MenuAction.settings,
+                child: Text('Settings'),
+              ),
+              const PopupMenuDivider(), // Optional visual separator
+              const PopupMenuItem<MenuAction>(
+                value: MenuAction.logout,
+                child: Text('Log out'),
+              ),
+            ],
+          ),
         ],
       ),
       body: Center(
@@ -33,7 +71,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.large(
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
         onPressed: () {},
