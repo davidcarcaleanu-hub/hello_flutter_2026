@@ -9,9 +9,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder(
-      color: Colors.red,
-      strokeWidth: 20.0,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const Placeholder(
+        color: Colors.red,
+        strokeWidth: 20.0,
+      ),
     );
   }
 }
