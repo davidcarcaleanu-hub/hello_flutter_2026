@@ -9,7 +9,8 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.grey,
       appBar: AppBar(
         title: Text('Our First Home Screen!'),
-        backgroundColor: Colors.blue[200],
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
         elevation: 2.0,
         shadowColor: Colors.black,
         actions: [
