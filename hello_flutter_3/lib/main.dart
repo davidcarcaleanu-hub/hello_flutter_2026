@@ -1,5 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 
+import 'screens/home_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -11,10 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const Placeholder(
-        color: Colors.red,
-        strokeWidth: 20.0,
-      ),
+      home: HomeScreen(),
     );
   }
 }
