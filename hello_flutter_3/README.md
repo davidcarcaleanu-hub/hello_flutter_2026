@@ -193,6 +193,8 @@ Image.network(
 
 Imaginea este în `Center` și `Padding`, aceleași widget-uri ca în aplicația anterioară: imaginea stă în mijlocul ecranului, cu 20 de pixeli liberi în jur.
 
+**Imagini de pe site-uri străine.** Imaginea noastră vine de pe Unsplash, un site care nu ne aparține. Pentru învățat este în regulă, dar o aplicație reală nu ar trebui să depindă de imagini luate direct de pe site-ul altcuiva: site-ul le poate schimba sau șterge oricând, condițiile lui de folosire s-ar putea să nu permită asta, imaginea nu apare fără internet, iar fiecare utilizator al aplicației ajunge să trimită cereri unui server străin. O aplicație reală folosește imagini proprii, incluse în aplicație (assets) sau puse pe serverul ei, ori imagini de la un serviciu ale cărui condiții permit în mod explicit afișarea lor în aplicații.
+
 **Internetul pe Android.** O aplicație Android are nevoie de permisiunea `INTERNET` ca să descarce ceva. Flutter o adaugă singur în `android/app/src/debug/AndroidManifest.xml`, așa că imaginea apare când rulezi aplicația din VS Code. În versiunea finală (release), de exemplu cu `flutter run --release` sau `flutter build apk`, permisiunea lipsește și imaginea nu se încarcă. Pentru release, permisiunea se adaugă și în `android/app/src/main/AndroidManifest.xml`, cu rândul `<uses-permission android:name="android.permission.INTERNET"/>`, deasupra elementului `<application>`. În browser nu este nevoie de nimic.
 
 ### FloatingActionButton

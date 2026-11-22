@@ -123,7 +123,8 @@ class HomeScreen extends StatelessWidget {
 
           // Image.network descarcă o imagine de pe internet și o afișează.
           child: Image.network(
-            // Adresa imaginii.
+            // Adresa imaginii, de pe un site străin: bine pentru învățat, dar o aplicație reală
+            // folosește imagini proprii, din assets sau de pe serverul ei (vezi README).
             'https://plus.unsplash.com/premium_photo-1792519573925-8e58242c5d9e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
 
             // Imaginea stă în mijlocul spațiului ei.
