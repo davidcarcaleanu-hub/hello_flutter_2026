@@ -152,11 +152,11 @@ Dacă nu ești sigur ce să faci, întreabă-mă înainte să ștergi ceva.
 
 ## Lecția pas cu pas, din istoricul de commit-uri
 
-La curs fac commit după fiecare pas mic, cu un mesaj care spune ce s-a schimbat, de exemplu "Add floating action button to HomeScreen for future functionality". Istoricul de commit-uri este, de fapt, lecția pas cu pas, și îl poți parcurge în ritmul tău, mai ales dacă ai lipsit sau ai rămas în urmă.
+La curs fac des commit, așa că istoricul de commit-uri arată cum a crescut codul, pas cu pas. Îl poți parcurge în ritmul tău, mai ales dacă ai lipsit sau ai rămas în urmă. Mesajele commit-urilor nu descriu întotdeauna exact ce s-a schimbat, așa că uită-te la modificările din fiecare commit, nu doar la mesaj.
 
 - **Pe GitHub:** intră în folderul unei aplicații, de exemplu `hello_flutter_3`, și apasă **History**, în dreapta sus. Vezi toate commit-urile care au schimbat acea aplicație, de la cel mai nou la cel mai vechi.
 - **Ce s-a schimbat la un pas:** dă clic pe un commit. Rândurile adăugate apar cu verde, cele șterse cu roșu.
 - **Codul de la un anumit pas:** în lista de commit-uri, butonul `<>` din dreapta unui commit îți arată tot proiectul așa cum era în acel moment.
 - **În VS Code:** panoul **Source Control** are și secțiunea **Source Control Graph**, cu același istoric. Când deschizi un fișier, secțiunea **Timeline**, din partea de jos a Explorer-ului, arată commit-urile care l-au schimbat.
 
-Un exercițiu bun: citește doar mesajul unui commit, încearcă să scrii tu modificarea, în copia ta, și abia apoi uită-te la ce s-a schimbat.
+Un exercițiu bun: alege un commit, uită-te la ce s-a schimbat, apoi închide pagina și încearcă să scrii tu aceeași modificare, din memorie, în copia ta.
