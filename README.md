@@ -24,9 +24,15 @@ O glumă aleasă la întâmplare dintr-o listă de 100, pe un fundal în culoare
 
 [Citește README-ul aplicației](hello_flutter_2/README.md)
 
+### 3. hello_flutter_3
+
+Un ecran adevărat de aplicație: bară de sus cu titlu, butoane și meniu cu trei puncte, o imagine de pe internet și un buton plutitor. Aici începem să organizăm codul: primele widget-uri proprii (StatelessWidget), `MaterialApp` și `Scaffold`, iar ecranul principal stă în fișierul lui, în folderul `screens/`.
+
+[Citește README-ul aplicației](hello_flutter_3/README.md)
+
 ### Ce urmează
 
-Vom adăuga aici aplicații noi, pe măsură ce le facem la curs: widget-uri proprii (StatelessWidget), MaterialApp, starea aplicației (state) și altele.
+Vom adăuga aici aplicații noi, pe măsură ce le facem la curs: starea aplicației (state), navigarea între ecrane și altele.
 
 ## Cum începi
 

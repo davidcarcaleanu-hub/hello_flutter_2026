@@ -19,7 +19,7 @@ Ca și primul, acest README este o a doua cale de a învăța Flutter, pe lâng�
 - [Cum am folosit AI](#cum-am-folosit-ai)
 - [Cum rulezi aplicația](#cum-rulezi-aplicația)
 - [Încearcă și tu](#încearcă-și-tu)
-- [Ce urmează: starea](#ce-urmează-starea)
+- [Ce urmează](#ce-urmează)
 - [Licență](#licență)
 
 ## Ce este nou față de prima aplicație
@@ -272,11 +272,13 @@ Fă modificările de mai jos una câte una, cu aplicația pornită. După fiecar
 10. **Cere ajutorul AI.** Cere unui asistent AI cinci glume noi, scrise exact în formatul din `jokes.dart`. Verifică-le după lista din [Cum am folosit AI](#cum-am-folosit-ai), apoi adaugă-le în listă.
 11. **Provocare: gluma zilei.** Fă aplicația să afișeze aceeași glumă toată ziua, iar a doua zi alta. Indiciu: `DateTime.now().day` dă ziua din lună, de la 1 la 31. Cum o folosești ca index în listă? Mai ai nevoie de `Random`?
 
-## Ce urmează: starea
+## Ce urmează
 
 Aplicația aceasta pare vie, dar nu este: gluma se alege o singură dată, la pornire, iar după aceea interfața nu se mai schimbă. Ca să vezi altă glumă, trebuie să pornești aplicația din nou.
 
-Cum am putea schimba gluma în timp ce aplicația rulează, de exemplu cu un buton "Altă glumă"? Pentru asta, aplicația trebuie să-și amintească ce glumă afișează acum și să-și redeseneze interfața când gluma se schimbă. Asta se numește **stare** (state) și este subiectul aplicației următoare.
+Cum am putea schimba gluma în timp ce aplicația rulează, de exemplu cu un buton "Altă glumă"? Pentru asta, aplicația trebuie să-și amintească ce glumă afișează acum și să-și redeseneze interfața când gluma se schimbă. Asta se numește **stare** (state) și o vom învăța puțin mai târziu.
+
+Înainte de asta, [aplicația următoare](../hello_flutter_3/README.md) face ordine în cod: mută interfața din `main` în widget-uri proprii și în fișiere separate și construiește un ecran adevărat, cu bară de sus, butoane și meniu.
 
 ## Licență
 

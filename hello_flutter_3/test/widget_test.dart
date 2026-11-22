@@ -1,30 +1,29 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
+// Un test de widget: pornește aplicația într-un mediu de test și verifică ce apare pe ecran.
+// Se rulează cu `flutter test`.
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hello_flutter_3/main.dart';
+import 'package:hello_flutter_3/screens/home_screen.dart';
 import 'package:material_ui/material_ui.dart';
 
-import 'package:hello_flutter_3/main.dart';
-
+/// Rulează testele aplicației.
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('Afișează ecranul principal, cu titlul și butoanele lui', (
+    WidgetTester tester,
+  ) async {
+    // Pornește aplicația și desenează primul cadru.
     await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Titlul din bara de sus.
+    expect(find.text('Our First Home Screen!'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Butonul plutitor și butonul cu trei puncte al meniului.
+    expect(find.byType(FloatingActionButton), findsOneWidget);
+    expect(find.byType(PopupMenuButton<MenuAction>), findsOneWidget);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // În teste nu există internet, așa că imaginea nu se poate descărca. Lăsăm cererea să se
+    // termine și preluăm eroarea, ca să nu pice testul din cauza ei.
+    await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 100)));
+    expect(tester.takeException(), isA<NetworkImageLoadException>());
   });
 }
