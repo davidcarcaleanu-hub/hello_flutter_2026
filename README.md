@@ -40,13 +40,7 @@ Vom adăuga aici aplicații noi, pe măsură ce le facem la curs: starea aplica�
 
 Ai nevoie de Flutter și de VS Code, cu extensia Flutter, instalate pe calculator.
 
-1. Descarcă repository-ul cu Git:
-
-   ```
-   git clone https://github.com/eduhoratiu/hello_flutter_2026.git
-   ```
-
-   Sau, de pe GitHub, folosește **Code > Download ZIP** și dezarhivează fișierul.
+1. Fă un **fork** al acestui repository, adică o copie în contul tău de GitHub, și clonează fork-ul pe calculator. Așa primești codul nou de la curs și îți poți salva pe GitHub și munca ta. Pașii, împreună cu celelalte variante (clone direct sau Download ZIP), sunt în [Cum urmărești codul de la curs](FOLLOW-THE-CODE.md).
 
 2. Deschide în VS Code **folderul unei aplicații**, de exemplu `hello_flutter_1`, nu folderul `hello_flutter_2026`. Fiecare aplicație are propriile setări și propriul `pubspec.yaml`, iar comenzile `flutter` funcționează doar din folderul aplicației.
 
@@ -58,6 +52,7 @@ Când VS Code îți propune să instalezi extensiile recomandate pentru proiect,
 
 - **`.editorconfig`** spune editoarelor de cod cum să salveze fișierele: codificare UTF-8, indentare cu 2 spații și sfârșit de rând de tip LF.
 - **`.gitattributes`** îi spune lui Git să păstreze toate fișierele text cu sfârșit de rând LF, pe orice sistem de operare. Astfel, proiectul arată la fel pe Windows, macOS și Linux.
+- **`FOLLOW-THE-CODE.md`** explică variantele prin care urmărești codul de la curs: fork, clone sau Download ZIP.
 - **`LICENSE`** conține textul licenței.
 
 ## Licență
