@@ -6,6 +6,8 @@ Primele două aplicații, [hello_flutter_1](../hello_flutter_1/README.md) și [h
 
 Ca și primele două, acest README este o a doua cale de a învăța Flutter, pe lângă ce facem la curs: înveți Flutter construind aplicații. Citește-l cu codul deschis alături, în `lib/main.dart` și `lib/screens/home_screen.dart`.
 
+<img src="readme-assets/screenshot-web.png" alt="Ecranul principal: bara de sus neagră cu titlu, două butoane și meniul cu trei puncte, o fotografie aeriană a unui oraș și butonul plutitor din dreapta jos" width="250">
+
 ## Cuprins
 
 - [Ce este nou față de aplicațiile anterioare](#ce-este-nou-față-de-aplicațiile-anterioare)

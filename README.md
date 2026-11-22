@@ -26,6 +26,8 @@ O glumă aleasă la întâmplare dintr-o listă de 100, pe un fundal în culoare
 
 ### 3. hello_flutter_3
 
+<img src="hello_flutter_3/readme-assets/screenshot-web.png" alt="Aplicația hello_flutter_3" width="160">
+
 Un ecran adevărat de aplicație: bară de sus cu titlu, butoane și meniu cu trei puncte, o imagine de pe internet și un buton plutitor. Aici începem să organizăm codul: primele widget-uri proprii (StatelessWidget), `MaterialApp` și `Scaffold`, iar ecranul principal stă în fișierul lui, în folderul `screens/`.
 
 [Citește README-ul aplicației](hello_flutter_3/README.md)
