@@ -2,7 +2,7 @@
 
 A doua noastră aplicație Flutter: la fiecare pornire afișează o glumă aleasă la întâmplare dintr-o listă de 100, pe un fundal în culoarea potrivită glumei, împreună cu motivul pentru care a fost aleasă culoarea.
 
-Prima aplicație, [hello_flutter_1](../hello_flutter_1/README.md), arăta mereu același lucru. Aceasta arată de fiecare dată altceva, deși folosește aceleași idei: widget-uri puse unele în altele, construite o singură dată, în `main`. Tot ce s-a schimbat este că interfața nu mai este scrisă direct în cod, ci se construiește din date.
+Prima aplicație, [hello_flutter_1](../hello_flutter_1/README.md), arăta mereu același lucru. Aceasta arată de fiecare dată altceva, deși folosește aceleași idei: widget-uri puse unele în altele, construite o singură dată, în `main`. Ce s-a schimbat este că interfața nu mai este scrisă direct în cod, ci se construiește din date, și că apare primul widget cu mai mulți children: `Column`.
 
 Ca și primul, acest README este o a doua cale de a învăța Flutter, pe lângă ce facem la curs: înveți Flutter construind aplicații. Citește-l cu codul deschis alături, în `lib/main.dart` și `lib/jokes.dart`.
 
@@ -25,10 +25,11 @@ Ca și primul, acest README este o a doua cale de a învăța Flutter, pe lâng�
 ## Ce este nou față de prima aplicație
 
 - Aplicația are **două fișiere de cod**: `jokes.dart`, cu datele, și `main.dart`, cu interfața.
-- Datele sunt organizate cu tipuri din Dart: **record-uri**, **`typedef`** și **liste**.
+- Datele sunt organizate cu tipuri din Dart: **record-uri** și **liste**.
 - Aplicația alege o glumă cu **`Random`**, așa că rezultatul diferă de la o pornire la alta.
 - Interfața se construiește **din date**: culoarea fundalului și textul vin din gluma aleasă, nu sunt scrise direct în cod. Același cod produce 100 de ecrane diferite.
-- Apar widget-uri și parametri noi: **`Padding`** și **`textAlign`**.
+- Apare primul widget cu **mai mulți children**: **`Column`**, care așază widget-urile unul sub altul.
+- Apar widget-uri și parametri noi: **`Padding`**, **`textAlign`** și **`fontStyle`**, plus o formă scurtă de a scrie valorile, ca `.min` și `.ltr`.
 
 Ce rămâne la fel: tot arborele de widget-uri se construiește în `main` și se afișează cu `runApp`. Dacă ideea de widget, de arbore de widget-uri sau de parametri cu nume nu îți e încă clară, citește întâi [README-ul primei aplicații](../hello_flutter_1/README.md#ideea-de-bază-totul-este-un-widget).
 
@@ -47,26 +48,25 @@ De aceea, aplicația este împărțită în două fișiere, fiecare cu rolul lui
 import 'jokes.dart';
 ```
 
-Spre deosebire de `import 'package:...'`, care aduce cod dintr-un pachet, acesta aduce cod din alt fișier al proiectului, aflat în același folder. După import, tot ce este definit în `jokes.dart` (tipul `Joke` și lista `builtInJokes`) poate fi folosit în `main.dart`.
+Spre deosebire de `import 'package:...'`, care aduce cod dintr-un pachet, acesta aduce cod din alt fișier al proiectului, aflat în același folder. După import, tot ce este definit în `jokes.dart` (lista `builtInJokes`) poate fi folosit în `main.dart`.
 
 Separarea datelor de interfață este unul dintre cele mai importante obiceiuri în programare. Poți adăuga, șterge sau modifica glume fără să atingi interfața, și poți schimba interfața fără să atingi glumele.
 
 ## Lista de glume, pas cu pas
 
-### Tipul Joke: un record
+### Tipul unei glume: un record
 
 ```dart
-typedef Joke = ({String text, Color color, String colorReason});
+({String text, Color color, String colorReason})
 ```
 
 Fiecare glumă are trei informații: textul, culoarea și motivul culorii. Pentru a le ține împreună, Dart are **record-uri**: un grup de valori, fiecare cu numele și tipul ei.
 
-- `({String text, Color color, String colorReason})` descrie forma record-ului: un câmp `text` de tip `String`, un câmp `color` de tip `Color` și un câmp `colorReason` de tip `String`.
-- `typedef` îi dă acestei forme un nume scurt, `Joke`. Fără el, ar trebui să scriem forma întreagă de fiecare dată când o folosim.
+Tipul de mai sus descrie forma record-ului: un câmp `text` de tip `String`, un câmp `color` de tip `Color` și un câmp `colorReason` de tip `String`.
 
 Dacă ați lucrat în Java, un record din Dart seamănă cu un `record` din Java. Dacă ați lucrat în JavaScript, seamănă cu un obiect `{ text: ..., color: ..., colorReason: ... }`, cu diferența că Dart verifică tipurile: nu poți pune un număr acolo unde se așteaptă un text.
 
-O valoare de tip `Joke` se scrie între paranteze rotunde, cu numele câmpurilor:
+O glumă se scrie între paranteze rotunde, cu numele câmpurilor:
 
 ```dart
 (
@@ -78,16 +78,26 @@ O valoare de tip `Joke` se scrie între paranteze rotunde, cu numele câmpurilor
 
 Iar câmpurile se citesc cu punct: `joke.text`, `joke.color`, `joke.colorReason`.
 
+### typedef: un nume pentru tip
+
+La începutul lui `jokes.dart` există un rând comentat:
+
+```dart
+// typedef Joke = ({String text, Color color, String colorReason});
+```
+
+`typedef` îi dă unui tip un nume scurt, aici `Joke`. Cu el, lista s-ar scrie `List<Joke>`, în loc să repete forma întreagă a record-ului. Pentru că tipul apare o singură dată în cod, l-am scris întreg, ca să se vadă direct ce conține o glumă. Când același tip apare în mai multe locuri, un nume dat cu `typedef` face codul mai ușor de citit.
+
 ### Lista builtInJokes
 
 ```dart
-const List<Joke> builtInJokes = [
+const List<({String text, Color color, String colorReason})> builtInJokes = [
   (...),
   (...),
 ];
 ```
 
-- `List<Joke>` este o listă în care fiecare element este un `Joke`. Partea dintre `<` și `>` spune ce tip au elementele, ca în `List<String>` din Java.
+- `List<...>` este o listă în care fiecare element este o glumă, adică un record cu cele trei câmpuri. Partea dintre `<` și `>` spune ce tip au elementele, ca în `List<String>` din Java.
 - Lista se scrie între paranteze drepte, cu elementele separate prin virgulă, ca un array din JavaScript.
 - `const` înseamnă că lista este fixă: este creată o singură dată, când se compilează aplicația, și nu poate fi modificată în timpul rulării. Nu putem adăuga sau șterge glume cât timp aplicația rulează, doar în cod.
 
@@ -139,18 +149,23 @@ Atunci de ce lista de glume este `const`, iar gluma aleasă este `final`? Difere
 - **`const`**: valoarea se cunoaște când **se compilează** aplicația. Lista de glume este scrisă în cod, deci se știe dinainte.
 - **`final`**: valoarea se cunoaște abia când **rulează** aplicația. Gluma aleasă depinde de un număr aleator, care nu există până nu pornește aplicația.
 
-Tipul variabilelor nu este scris, pentru că Dart îl deduce singur din valoare: `randomGen` este un `Random`, `currentJokeIndex` un `int`, iar `joke` un `Joke`. În VS Code, dacă ții mouse-ul deasupra numelui unei variabile, vezi tipul dedus.
+Tipul variabilelor nu este scris, pentru că Dart îl deduce singur din valoare: `randomGen` este un `Random`, `currentJokeIndex` un `int`, iar `joke` un record cu câmpurile `text`, `color` și `colorReason`. În VS Code, dacă ții mouse-ul deasupra numelui unei variabile, vezi tipul dedus.
 
 ## Interfața, pas cu pas
 
 Arborele de widget-uri seamănă cu cel din prima aplicație:
 
 ```
-ColoredBox        fundalul, în culoarea glumei
-  Center          așază child-ul în mijloc
-    Padding       spațiu gol de 40 de pixeli în jur
-      Text        gluma și explicația culorii
+ColoredBox          fundalul, în culoarea glumei
+  Center            așază child-ul în mijloc
+    Padding         spațiu gol de 40 de pixeli în jur
+      Column        așază children unul sub altul
+        Text        gluma
+        Text        explicația culorii
+        Text        un text fix: World Hello
 ```
+
+Noutatea este `Column`: primul widget din curs care are mai mulți children. Până acum, fiecare widget avea un singur `child`, așa că arborele era o linie dreaptă. De la `Column` încolo, arborele se ramifică.
 
 ### Fundalul din date
 
@@ -169,17 +184,40 @@ ColoredBox(
 
 În prima aplicație, spațiul interior era dat prin parametrul `padding` al lui `Container`. Când ai nevoie doar de spațiu, fără fundal, bordură sau umbră, `Padding` este varianta mai simplă și mai clară.
 
-### Textul din date
+### Column: mai mulți children
 
 ```dart
-Text(
-  '${joke.text}\n\n${joke.colorReason}',
-  ...
+Column(
+  mainAxisSize: .min,
+  spacing: 40.0,
+  children: [
+    Text(joke.text, ...),
+    Text(joke.colorReason, ...),
+    Text('World Hello', ...),
+  ],
 )
 ```
 
-- `${...}` pune valoarea unei expresii în interiorul textului, ca în template strings din JavaScript (`` `${...}` ``). Aici, textul glumei și explicația culorii.
-- `\n` trece pe rândul următor. Două `\n` lasă un rând gol între glumă și explicație.
+- `children` primește o **listă** de widget-uri, scrisă între paranteze drepte, ca lista de glume. `Column` le așază unul sub altul, în ordinea din listă. Poți pune în listă oricâte widget-uri.
+- `spacing: 40.0` lasă 40 de pixeli între două widget-uri vecine. Fără el, textele ar sta lipite unul de altul.
+- `mainAxisSize: .min` îi spune lui `Column` să ocupe pe verticală doar cât îi trebuie pentru children. Altfel, `Column` ar ocupa toată înălțimea ecranului, iar textele ar urca sus, pentru că `Center` nu ar mai avea ce centra.
+
+Perechea lui `Column` este `Row`, care așază widget-urile unul lângă altul, de la stânga la dreapta.
+
+### Textele din date
+
+Primul `Text` afișează `joke.text`, al doilea `joke.colorReason`. Fiind widget-uri separate, fiecare are stilul lui: gluma are `fontSize: 60`, iar explicația are `fontSize: 30` și `fontStyle: FontStyle.italic`, adică litere înclinate. Așa se vede ușor ce este gluma și ce este explicația.
+
+Al treilea `Text`, `'World Hello'`, nu vine din date: este scris direct în cod și apare sub fiecare glumă. Arată că într-un `Column` se pot amesteca widget-uri construite din date cu widget-uri fixe.
+
+### Forma scurtă: .min și .ltr
+
+```dart
+textDirection: TextDirection.ltr,
+textDirection: .ltr,
+```
+
+Cele două rânduri înseamnă același lucru. Parametrul `textDirection` acceptă doar valori de tip `TextDirection`, așa că Dart știe deja tipul și putem scrie doar `.ltr`. La fel, `mainAxisSize: .min` este forma scurtă pentru `mainAxisSize: MainAxisSize.min`. În cod vei întâlni ambele forme.
 
 ### textAlign
 
@@ -197,7 +235,7 @@ Hot restart (**Ctrl+Shift+F5** în VS Code, sau `R` în terminal) pornește apli
 
 ## Cum am folosit AI
 
-Lista de glume din `jokes.dart` a fost scrisă cu ajutorul unui asistent AI. Este o sarcină potrivită pentru AI: date multe, cu aceeași structură, care ar dura mult de scris de mână. I-am cerut glume cunoscute, potrivite pentru clasă, din mai multe domenii, fiecare cu o culoare potrivită și o explicație a culorii, scrise direct în formatul record-ului `Joke`.
+Lista de glume din `jokes.dart` a fost scrisă cu ajutorul unui asistent AI. Este o sarcină potrivită pentru AI: date multe, cu aceeași structură, care ar dura mult de scris de mână. I-am cerut glume cunoscute, potrivite pentru clasă, din mai multe domenii, fiecare cu o culoare potrivită și o explicație a culorii, scrise direct în formatul record-ului unei glume.
 
 Rezultatul nu a fost folosit fără verificare. Ce trebuie verificat la date generate de AI:
 
@@ -226,10 +264,13 @@ Fă modificările de mai jos una câte una, cu aplicația pornită. După fiecar
 2. **Provoacă o eroare.** Șterge câmpul `colorReason` din gluma ta și citește mesajul analizorului. Ce spune? Pune câmpul la loc.
 3. **Adaugă o temă nouă.** Scrie un comentariu cu numele temei (de exemplu, `// Sport`) și adaugă sub el două-trei glume. Rulează `flutter test`: testul trece în continuare? De ce?
 4. **Potrivește mărimea textului.** Pornește aplicația pe telefon și apasă hot restart până dai de o glumă lungă. Încape textul pe ecran? Schimbă `fontSize: 60` până când și glumele lungi încap.
-5. **Schimbă stilul textului.** Adaugă în `TextStyle` parametrii `fontWeight: FontWeight.bold` și `color: Colors.white`. Ce se întâmplă cu glumele care au fundal deschis la culoare?
+5. **Schimbă stilul textului.** Adaugă în `TextStyle`-ul glumei parametrii `fontWeight: FontWeight.bold` și `color: Colors.white`. Ce se întâmplă cu glumele care au fundal deschis la culoare?
 6. **Schimbă spațiul din jur.** Înlocuiește `EdgeInsets.all(40)` cu `EdgeInsets.symmetric(horizontal: 80)`. Ce s-a schimbat?
-7. **Cere ajutorul AI.** Cere unui asistent AI cinci glume noi, scrise exact în formatul din `jokes.dart`. Verifică-le după lista din [Cum am folosit AI](#cum-am-folosit-ai), apoi adaugă-le în listă.
-8. **Provocare: gluma zilei.** Fă aplicația să afișeze aceeași glumă toată ziua, iar a doua zi alta. Indiciu: `DateTime.now().day` dă ziua din lună, de la 1 la 31. Cum o folosești ca index în listă? Mai ai nevoie de `Random`?
+7. **Lucrează cu Column.** Schimbă `spacing: 40.0` în `0` și apoi în `100`. Mută `Text('World Hello', ...)` primul în listă. Apoi șterge `mainAxisSize: .min`: unde ajung textele și de ce?
+8. **Adaugă un child.** Adaugă în `children` un al patrulea `Text`, care afișează numărul glumei: `'Gluma ${currentJokeIndex + 1} din ${builtInJokes.length}'`. `${...}` pune valoarea unei expresii în text, ca în template strings din JavaScript.
+9. **Folosește typedef.** Scoate comentariul de pe rândul cu `typedef` din `jokes.dart` și scrie tipul listei ca `List<Joke>`. Aplicația funcționează la fel?
+10. **Cere ajutorul AI.** Cere unui asistent AI cinci glume noi, scrise exact în formatul din `jokes.dart`. Verifică-le după lista din [Cum am folosit AI](#cum-am-folosit-ai), apoi adaugă-le în listă.
+11. **Provocare: gluma zilei.** Fă aplicația să afișeze aceeași glumă toată ziua, iar a doua zi alta. Indiciu: `DateTime.now().day` dă ziua din lună, de la 1 la 31. Cum o folosești ca index în listă? Mai ai nevoie de `Random`?
 
 ## Ce urmează: starea
 

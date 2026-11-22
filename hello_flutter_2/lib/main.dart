@@ -33,17 +33,22 @@ void main() {
           // 40 de pixeli pe fiecare latură.
           padding: const EdgeInsets.all(40),
 
-          // Text afișează un șir de caractere pe ecran.
+          // Column așază mai multe widget-uri (children) unul sub altul, de sus în jos.
           child: Column(
+            // Column ia pe verticală doar cât îi trebuie, ca Center să-l poată centra.
             mainAxisSize: .min,
+
+            // Spațiul dintre două widget-uri vecine din children, în pixeli.
             spacing: 40.0,
+
+            // children: lista widget-urilor din Column, în ordinea în care apar pe ecran.
             children: [
+              // Primul child: textul glumei.
               Text(
-                // ${...} pune valoarea unei expresii în text, ca în template strings din JavaScript.
-                // \n trece pe rândul următor; două \n lasă un rând gol între glumă și explicație.
+                // Câmpul text din gluma aleasă.
                 joke.text,
 
-                // Fără MaterialApp, trebuie să spunem noi direcția textului: de la stânga la dreapta.
+                // Fără MaterialApp, spunem noi direcția textului: de la stânga la dreapta.
                 textDirection: TextDirection.ltr,
 
                 // Fiecare rând al textului este centrat.
@@ -55,12 +60,13 @@ void main() {
                   fontSize: 60,
                 ),
               ),
+
+              // Al doilea child: explicația culorii, mai mică și înclinată.
               Text(
-                // ${...} pune valoarea unei expresii în text, ca în template strings din JavaScript.
-                // \n trece pe rândul următor; două \n lasă un rând gol între glumă și explicație.
+                // Câmpul colorReason din gluma aleasă.
                 joke.colorReason,
 
-                // Fără MaterialApp, trebuie să spunem noi direcția textului: de la stânga la dreapta.
+                // Direcția textului, ca la gluma de mai sus.
                 textDirection: TextDirection.ltr,
 
                 // Fiecare rând al textului este centrat.
@@ -68,13 +74,20 @@ void main() {
 
                 // TextStyle stabilește cum arată textul.
                 style: const TextStyle(
-                  // Mărimea literelor, în pixeli.
+                  // Literele sunt la jumătate din mărimea glumei.
                   fontSize: 30,
+
+                  // Litere înclinate (italic).
                   fontStyle: FontStyle.italic,
                 ),
               ),
+
+              // Al treilea child: un text fix, ca să vedem că Column primește oricâte widget-uri.
               Text(
+                // Textul scris direct în cod, nu luat din glumă.
                 'World Hello',
+
+                // Forma scurtă pentru TextDirection.ltr: Dart știe deja tipul parametrului.
                 textDirection: .ltr,
               ),
             ],

@@ -1,16 +1,14 @@
 // Biblioteca painting din Flutter, de unde vine clasa Color.
 import 'package:flutter/painting.dart';
 
-/// O glumă, o culoare potrivită cu ea și motivul pentru care a fost aleasă culoarea.
-///
-/// Este un record: un grup de valori cu nume, ca un obiect JavaScript sau un record din Java.
-/// `typedef` îi dă tipului un nume scurt, Joke, pe care îl folosim în loc să-l scriem întreg.
+// Cu typedef, tipul unei glume ar primi numele scurt Joke, iar lista s-ar scrie List<Joke>.
 // typedef Joke = ({String text, Color color, String colorReason});
 
 /// Lista glumelor din aplicație, cunoscute și potrivite pentru clasă, din mai multe domenii.
 ///
-/// `const` înseamnă că lista este fixă: este creată o singură dată, la compilare, și nu se poate
-/// modifica. `List<Joke>` arată că fiecare element al listei este un Joke, ca în Java.
+/// Fiecare glumă este un record: un grup de valori cu nume, ca un obiect JavaScript sau un record
+/// din Java. `const` înseamnă că lista este fixă: este creată o singură dată, la compilare, și nu
+/// se poate modifica.
 const List<({String text, Color color, String colorReason})> builtInJokes = [
   // Programare
   (
