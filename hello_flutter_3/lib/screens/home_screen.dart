@@ -71,7 +71,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
         // Ce se întâmplă la apăsare; deocamdată nimic.
         onPressed: () {
-          _counter++;
+          setState(() {
+            _counter++;
+          });
+
           print(_counter);
         },
 
