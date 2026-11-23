@@ -9,7 +9,9 @@ enum MenuAction { refresh, settings, logout }
 /// Ecranul principal al aplicației: bara de sus, o imagine și un buton plutitor.
 class HomeScreen extends StatelessWidget {
   // Constructorul, forma scurtă pentru `const HomeScreen({super.key})`.
-  const new({super.key});
+  new({super.key});
+
+  int _counter = 0;
 
   // build descrie ce afișează ecranul.
   @override
@@ -29,13 +31,26 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
 
           // Image.network descarcă o imagine de pe internet și o afișează.
-          child: Image.network(
-            // Adresa imaginii, de pe un site străin: bine pentru învățat, dar o aplicație reală
-            // folosește imagini proprii, din assets sau de pe serverul ei (vezi README).
-            'https://plus.unsplash.com/premium_photo-1792519573925-8e58242c5d9e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
+          child: Row(
+            mainAxisSize: .min,
+            spacing: 20.0,
+            children: [
+              Text(
+                '$_counter',
+                style: TextStyle(
+                  fontSize: 40.0,
+                  fontWeight: .bold,
+                ),
+              ),
+              Image.network(
+                // Adresa imaginii, de pe un site străin: bine pentru învățat, dar o aplicație reală
+                // folosește imagini proprii, din assets sau de pe serverul ei (vezi README).
+                'https://plus.unsplash.com/premium_photo-1792519573925-8e58242c5d9e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
 
-            // Imaginea stă în mijlocul spațiului ei.
-            alignment: AlignmentGeometry.center,
+                // Imaginea stă în mijlocul spațiului ei.
+                alignment: AlignmentGeometry.center,
+              ),
+            ],
           ),
         ),
       ),

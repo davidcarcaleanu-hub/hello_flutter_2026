@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // MaterialApp pregătește aplicația: tema, direcția textului, navigarea între ecrane.
-    return const MaterialApp(
+    return MaterialApp(
       // Ascunde eticheta roșie "DEBUG" din colțul ecranului.
       debugShowCheckedModeBanner: false,
 
