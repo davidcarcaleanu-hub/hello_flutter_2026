@@ -105,7 +105,7 @@ class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         // <MenuAction> arată tipul valorilor din meniu.
         PopupMenuButton<MenuAction>(
           // Textul care apare când ții mouse-ul deasupra butonului.
-          tooltip: 'More options',
+          tooltip: strings.overflowTooltip,
 
           // Se apelează când alegi o opțiune; item este valoarea opțiunii alese.
           onSelected: (MenuAction item) {
@@ -146,7 +146,7 @@ class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             // O opțiune care afișează doar text.
             const PopupMenuItem<MenuAction>(
               value: MenuAction.settings,
-              child: Text('Settings'),
+              child: Text(strings.settingsMenuItem),
             ),
 
             // O linie orizontală care separă opțiunile.
@@ -155,7 +155,7 @@ class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             // Ultima opțiune, despărțită de celelalte prin linie.
             const PopupMenuItem<MenuAction>(
               value: MenuAction.logout,
-              child: Text('Log out'),
+              child: Text(strings.logOutMenuItem),
             ),
           ],
         ),
