@@ -1,6 +1,8 @@
 // Pachetul Material: widget-uri de bază, culori și iconițe.
 import 'package:material_ui/material_ui.dart';
 
+import '../common/strings.dart' as strings;
+
 /// Opțiunile din meniul cu trei puncte al ecranului principal.
 enum MenuAction { refresh, settings, logout }
 
@@ -57,14 +59,15 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+/// The App Bar of the Home Screen.
 class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const new({super.key});
+  const new();
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       // Titlul din bară.
-      title: const Text('Our First Home Screen!'),
+      title: const Text(strings.homeScreenTitle),
 
       // Culoarea barei.
       backgroundColor: Colors.black,
