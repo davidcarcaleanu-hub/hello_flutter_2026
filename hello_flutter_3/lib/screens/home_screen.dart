@@ -7,10 +7,15 @@ import '../common/strings.dart' as strings;
 enum MenuAction { refresh, settings, logout }
 
 /// Ecranul principal al aplicației: bara de sus, o imagine și un buton plutitor.
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   // Constructorul, forma scurtă pentru `const HomeScreen({super.key})`.
   new({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   int _counter = 0;
 
   // build descrie ce afișează ecranul.
@@ -65,7 +70,10 @@ class HomeScreen extends StatelessWidget {
         foregroundColor: Colors.white,
 
         // Ce se întâmplă la apăsare; deocamdată nimic.
-        onPressed: () {},
+        onPressed: () {
+          _counter++;
+          print(_counter);
+        },
 
         // Iconița din buton.
         child: const Icon(Icons.refresh),
